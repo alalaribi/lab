@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: foody
+  name: foody
+  namespace: foody
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: foody
+  template:
+    metadata:
+      labels:
+        app: foody
+    spec:
+      containers:
+        - image: ghcr.io/mealie-recipes/mealie:v3.5.0
+          name: mealie
+          ports:
+            - containerPort: 9000
